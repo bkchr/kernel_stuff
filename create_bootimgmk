@@ -18,8 +18,9 @@ cat ${KPATH}Image.gz ${DTBPATH}huawei_lunch_box_va.dtb \
 mkbootimg --output boot.img \
          --kernel Image.gz-dtb \
          --ramdisk initrd.img \
-         --cmdline "msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 console=ttyHSL0,115200,n8 earlyprintk=msm_hsl_uart,0xf991e000" \
+         --cmdline "msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 console=ttyMSM0,115200n8" \
          --base 0 --pagesize 2048
          
          
-#--cmdline "msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 console=ttyHSL0,115200,n8 earlycon=msm_serial_dm,0xf991e000" 
+#--cmdline "msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 console=ttyMSM0,115200n8 earlycon=msm_serial_dm,0xf991e000" 
+#--cmdline "msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 console=ttyHSL0,115200,n8 earlyprintk=msm_hsl_uart,0xf991e000"
