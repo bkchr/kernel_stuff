@@ -5,20 +5,15 @@
 
 
 KPATH=/home/bastian/projects/angler/mainline-kernel/arch/arm64/boot/
-DTBPATH=${KPATH}dts/huawei/
+DTBPATH=${KPATH}dts/qcom/
 
-cat ${KPATH}Image.gz ${DTBPATH}huawei_lunch_box_va.dtb \
-    ${DTBPATH}huawei_angler_v1.dtb ${DTBPATH}huawei_angler_v2.dtb \
-    ${DTBPATH}huawei_angler_v3.dtb ${DTBPATH}huawei_angler_v4.dtb \
-    ${DTBPATH}huawei_angler_vn1.dtb ${DTBPATH}huawei_angler_vn2.dtb \
-    ${DTBPATH}huawei_angler_row_v1.dtb ${DTBPATH}huawei_angler_row_v3.dtb \
-    ${DTBPATH}huawei_angler_row_vn1.dtb > Image.gz-dtb
+cat ${KPATH}Image.gz ${DTBPATH}msm8994-angler-rev-101.dtb > Image.gz-dtb
 
 
 mkbootimg --output boot.img \
          --kernel Image.gz-dtb \
          --ramdisk initrd.img \
-         --cmdline "msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 console=ttyMSM0,115200n8" \
+         --cmdline "msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 boot_cpus=0-3 console=ttyMSM0,115200n8 earlycon=msm_serial_dm,0xf991e000 root=/dev/ram rw rdinit=/bin/sh" \
          --base 0 --pagesize 2048
          
          
